@@ -10,8 +10,8 @@ function beginParallex(){
     let scrollValue = window.scrollY
 
     text.style.top = 40 + (scrollValue * -0.5) + '%'
-    btn.style.top = 60 + (scrollValue * -0.2) + '%'
-    birds.style.right = (scrollValue * -0.2) + '%'
+    btn.style.left = 45 + (scrollValue * -0.2) + '%'
+    birds.style.right = (scrollValue * -0.3) + '%'
 }
 
 onMounted(() => {
@@ -66,6 +66,7 @@ onMounted(() => {
     position: absolute;
     z-index: 10;
     top: 60%;
+    left: 45%;
     padding: 15px;
     background-color: antiquewhite;
     border-radius: 10px;
