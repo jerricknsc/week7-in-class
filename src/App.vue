@@ -10,7 +10,7 @@ function beginParallex(){
     let scrollValue = window.scrollY
 
     text.style.top = 40 + (scrollValue * -0.5) + '%'
-    btn.style.left = 45 + (scrollValue * -0.2) + '%'
+    btn.style.left = 45 + (scrollValue * -0.4) + '%'
     birds.style.right = (scrollValue * -0.3) + '%'
 }
 
