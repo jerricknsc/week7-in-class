@@ -1,23 +1,93 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import { onMounted } from 'vue';
+
+function beginParallex(){
+
+    let text = document.getElementById('text')
+    let btn = document.getElementById('letsGo')
+    let birds = document.getElementById('birds')
+
+    let scrollValue = window.scrollY
+
+    text.style.top = 40 + (scrollValue * -0.5) + '%'
+    btn.style.top = 60 + (scrollValue * -0.2) + '%'
+    birds.style.right = (scrollValue * -0.2) + '%'
+}
+
+onMounted(() => {
+    window.addEventListener('scroll', beginParallex)
+})
+
 </script>
 
 <template>
+    <div id="paragraph">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit error accusantium optio dignissimos. Tenetur, architecto
+            commodi ipsa asperiores voluptatum sequi aliquid quam incidunt accusamus impedit in! Ut magnam deserunt dignissimos?
+    </div>
+    <section id="section">
+        <h1 id="text"> This is jerrick's app </h1>
+        <button id="letsGo"> Let's Go! </button>
+        <img id="birds" src="./images/birds.png">
+        <img id="snow-mountains" src="./images/snow-mountains.webp">
+    </section>
 
-  this is jerrick's app
+    <body>
+        <div id="paragraph">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit error accusantium optio dignissimos. Tenetur, architecto
+            commodi ipsa asperiores voluptatum sequi aliquid quam incidunt accusamus impedit in! Ut magnam deserunt dignissimos?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit error accusantium optio dignissimos. Tenetur, architecto
+            commodi ipsa asperiores voluptatum sequi aliquid quam incidunt accusamus impedit in! Ut magnam deserunt dignissimos?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit error accusantium optio dignissimos. Tenetur, architecto
+            commodi ipsa asperiores voluptatum sequi aliquid quam incidunt accusamus impedit in! Ut magnam deserunt dignissimos?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit error accusantium optio dignissimos. Tenetur, architecto
+            commodi ipsa asperiores voluptatum sequi aliquid quam incidunt accusamus impedit in! Ut magnam deserunt dignissimos?
+        </div>
+    </body>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+#section {
+    position: relative;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+#text {
+    position: absolute;
+    z-index: 10;
+    font-size: 50px;
+    top: 40%;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+#letsGo {
+    position: absolute;
+    z-index: 10;
+    top: 60%;
+    padding: 15px;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    min-width: 10rem;
 }
+
+#birds {
+    position: absolute;
+    z-index: 10;
+    scale: 0.4;
+    top: -40%;
+    right: 0;
+}
+
+#snow-mountains {
+    width: 100vw;
+    max-height: 80vh;
+    opacity: 0.7;
+}
+
+#paragraph {
+    font-size: 2rem;
+}
+
 </style>
