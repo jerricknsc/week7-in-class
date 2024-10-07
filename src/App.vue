@@ -1,90 +1,49 @@
-<!-- <script setup>
-import { onMounted } from 'vue';
-
-function beginParallex(){
-    let bgImg = document.getElementById('background-img')
-    
-    let scrollValue = window.scrollY
-
-    // bgImg.style.scale = 1 + (scrollValue / 1000)
-    // if (bgImg.style.scale <= 2){
-
-    // }
-    console.log(bgImg.style.scale)
-}
-
-onMounted(() => {
-    window.addEventListener('scroll', beginParallex)
-})
-
-</script>
-
-<template>
-    <div id="main-section">
-        <div id="background-img">
-            <img class="foreground" src="./images/file.png">
-            <img class="foreground" src="./images/mountain.png">
-        </div>
-    </div>
-
-    <div id="paragraph">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit error accusantium optio dignissimos. Tenetur, architecto
-            commodi ipsa asperiores voluptatum sequi aliquid quam incidunt accusamus impedit in! Ut magnam deserunt dignissimos?
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit error accusantium optio dignissimos. Tenetur, architecto
-            commodi ipsa asperiores voluptatum sequi aliquid quam incidunt accusamus impedit in! Ut magnam deserunt dignissimos?
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit error accusantium optio dignissimos. Tenetur, architecto
-            commodi ipsa asperiores voluptatum sequi aliquid quam incidunt accusamus impedit in! Ut magnam deserunt dignissimos?
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit error accusantium optio dignissimos. Tenetur, architecto
-            commodi ipsa asperiores voluptatum sequi aliquid quam incidunt accusamus impedit in! Ut magnam deserunt dignissimos?
-    </div>
-
-
-</template> -->
-
-
 <script setup>
-import { onMounted, onUnmounted } from 'vue';
+import { onMounted } from 'vue'
 
-function beginParallax() {
-    let bgImg = document.getElementById('background-img');
-    let foregrounds = document.querySelectorAll('.foreground');
+function startParallex(){
+    let scrollValue = window.scrollY
+    // window.scrollY /= 2
+    
+    let layer1 = document.getElementById('layer1')
+    layer1.style.width = (100 + scrollValue / 5) + '%'
+    
+    let layer2 = document.getElementById('layer2')
+    layer2.style.width = (100 + scrollValue / 5) + '%'
+    layer2.style.left = (scrollValue / 50) + '%'
+    
+    let text = document.getElementById('text')
+    text.style.top = - scrollValue / 5 + '%'
 
-    let scrollValue = window.scrollY;
+    console.log(window.scrollY)
+    
 
-    // Parallax effect for background image
-    bgImg.style.transform = `translateY(${scrollValue * 0.5}px)`; // Slower scrolling for background
-
-    // Parallax effect for each foreground image
-    foregrounds.forEach((foreground, index) => {
-        // Each foreground layer scrolls at a slightly different speed for depth
-        foreground.style.transform = `translateY(${scrollValue * (0.3 - (index * 0.1))}px)`;
-    });
 }
 
 onMounted(() => {
-    window.addEventListener('scroll', beginParallax);
-});
-
-onUnmounted(() => {
-    window.removeEventListener('scroll', beginParallax); // Clean up event listener
-});
+    window.addEventListener('scroll', startParallex)
+})
 </script>
 
-<template>
-    <div id="main-section">
-        <div id="background-img">
-            <!-- Foreground images for parallax effect -->
-            <img class="foreground" src="./images/file.png">
-            <img class="foreground" src="./images/mountain.png">
-        </div>
-    </div>
 
-    <div id="paragraph">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit error accusantium optio dignissimos. Tenetur, architecto
-        commodi ipsa asperiores voluptatum sequi aliquid quam incidunt accusamus impedit in! Ut magnam deserunt dignissimos?
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit error accusantium optio dignissimos. Tenetur, architecto
-        commodi ipsa asperiores voluptatum sequi aliquid quam incidunt accusamus impedit in! Ut magnam deserunt dignissimos?
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit error accusantium optio dignissimos. Tenetur, architecto
-        commodi ipsa asperiores voluptatum sequi aliquid quam incidunt accusamus impedit in! Ut magnam deserunt dignissimos?
-    </div>
+<template>
+        <section class="zoom">
+            <img id="layer1" src="./images/mountain1.png">
+            <img id="layer2" src="./images/mountain2.png">
+            <img id="text" src="./images/text.png">
+        </section>
+        <section class="content">
+            <h2> Sample parallex </h2>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Excepturi deserunt quasi ullam dolores ducimus? Provident architecto eos, excepturi et,
+                labore maxime vitae officia iusto sint praesentium doloribus doloremque corrupti distinctio?
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Excepturi deserunt quasi ullam dolores ducimus? Provident architecto eos, excepturi et,
+                labore maxime vitae officia iusto sint praesentium doloribus doloremque corrupti distinctio?
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Excepturi deserunt quasi ullam dolores ducimus? Provident architecto eos, excepturi et,
+                labore maxime vitae officia iusto sint praesentium doloribus doloremque corrupti distinctio?
+            </p>
+        </section>
 </template>
