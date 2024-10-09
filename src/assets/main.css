@@ -1,8 +1,18 @@
 @import './base.css';
+@import url('https://fonts.cdnfonts.com/css/merge-one');
+@import url('https://fonts.cdnfonts.com/css/lato');
+@import url('https://fonts.cdnfonts.com/css/alata');
+@import url('https://fonts.cdnfonts.com/css/copperplate-gothic-light');
+@import url('https://fonts.cdnfonts.com/css/kay-pho-du');
+@import url('https://fonts.cdnfonts.com/css/papryus');
+
 #app {
   background-color: #FFF2E9;
   /* width: 100vw; */
-  font-family: fantasy;
+  font-family: 'Merge One', sans-serif;
+  /* font-family: 'Lato', sans-serif; */
+  /* font-family: 'Alata', sans-serif; */
+  /* font-family: 'Copperplate Gothic Light', sans-serif; */
 }
 
 /* #app {
