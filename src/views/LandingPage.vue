@@ -18,7 +18,7 @@ onMounted(() => {
     })
     
     timeline1
-        .to('#app-name', {yPercent: -150, scale: 0.85})
+        .to('#app-name', {yPercent: -150, scale: 0.9})
         .to('#sun', {yPercent: -20, xPercent: 7, scale: 0.8}, 0)
         .to('#cloud-3', {yPercent: -21, xPercent: 9, scale: 0.7}, 0)
         .to('#bird-3', {yPercent: -30, xPercent: 20, scale: 0.5}, 0)
@@ -29,6 +29,11 @@ onMounted(() => {
         .to('#cloud-4', {xPercent: 15, opacity: 0.85})
         .to('#app-name', {yPercent: -160}, '<0')
         .to('#slogan', {yPercent: -100, opacity: 1}, '<0')
+        .to('#trees', {yPercent: -5}, '<0')
+        .to('#man', {yPercent: -5, xPercent: 5, scale: 1.1}, '<0')
+        .to('#blue-mountain', {yPercent: -5}, '<0')
+        // .to('#slogan', {yPercent: -150, opacity: 0},'< 3')
+        .to('button', {yPercent: -50, opacity: 1})
 
 })
 </script>
@@ -51,8 +56,11 @@ onMounted(() => {
         <img id="red-mountain" class="image w-100" src="../images/red-mountain.png">
         <h1 id="app-name" class="text-center w-100"> Voyager </h1>
         <h3 id="slogan" class="text-center w-100"> to roam the roads of lands remote </h3>
+        <div id="button-div" class="w-100">
+            <button class="btn btn-dark m-auto d-block"> Start your journey now. </button>
+        </div>
     </div>
-    <!-- <div class="content">
+    <div class="content">
         <h2> Sample parallex </h2>
         <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -65,7 +73,7 @@ onMounted(() => {
             Excepturi deserunt quasi ullam dolores ducimus? Provident architecto eos, excepturi et,
             labore maxime vitae officia iusto sint praesentium doloribus doloremque corrupti distinctio?
         </p>
-    </div> -->
+    </div>
 </template>
 
 <style>
@@ -76,6 +84,7 @@ onMounted(() => {
 
     #background {
         width: 100%;
+        min-height: 57vw;
         height: 100vh;
         position: relative;
         top: -96px;
@@ -101,12 +110,16 @@ onMounted(() => {
         opacity: 0;
     }
 
-    #background #man {
-        
+    #button-div {
+        position: absolute;
+        bottom: 25vw;
     }
 
-    #plants {
-        /* scale: 0.9; */
-        /* bottom: 0; */
+    #button-div button {
+        font-size: 1.7vw;
+        opacity: 0;
+        /* background-color: #1c1c1b; */
+        /* border: 1px solid black; */
+        /* color: white; */
     }
 </style>
