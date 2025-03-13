@@ -1,8 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState} from "react";
 import { Button } from "@/components/ui/button";
 import "./App.css";
 import { UploadArea } from "./homepage/UploadArea";
-import { Wand2, ImageOff, Download } from "lucide-react";
+import { Download } from "lucide-react";
 import CropPopUp from "./homepage/cropPopUp";
 import Enhance from "./homepage/Enhance";
 import BgRemoverPopUp from "./homepage/BgRemoverPopUp";
@@ -28,6 +28,7 @@ function App() {
       setUploadedImage(imageUrl);
       setCroppedImage(null); // Reset cropped image when new image is uploaded
       setBgRemovedImage(null); // Reset bg removed image when new image is uploaded
+      console.log(bgRemovedImage)
     } else {
       setUploadedImage(null);
     }

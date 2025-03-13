@@ -28,6 +28,7 @@ export default function CropPopUp({ baseImage, setCroppedImage }: CropPopUpProps
     if (!isOpen) {
       setImageLoaded(false);
       setSelectedCountry(null);
+      console.log(selectedCountry)
       setZoomLevel(1);
       setScaleX(1);
       setScaleY(1);

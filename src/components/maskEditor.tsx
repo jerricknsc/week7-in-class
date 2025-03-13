@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./maskEditor.less";
-import { hexToRgb, toMask } from "./utils";
+import { hexToRgb} from "./utils";
 
 export interface MaskEditorProps {
   src: string;
@@ -235,11 +235,14 @@ export const MaskEditor: React.FC<MaskEditorProps> = (props: MaskEditorProps) =>
 
     if (imageData) {
       for (var i = 0; i < imageData?.data.length; i += 4) {
-        const pixelColor = ((imageData.data[i] === 255) != invert) ? color : [255, 0, 0] ;
-        imageData.data[i] = pixelColor[0];
-        imageData.data[i + 1] = pixelColor[1];
-        imageData.data[i + 2] = pixelColor[2];
-        imageData.data[i + 3] = imageData.data[i + 3];
+        const pixelColor = ((imageData.data[i] === 255) != invert) ? color : [255, 0, 0];
+
+        if (pixelColor) {
+          imageData.data[i] = pixelColor[0];
+          imageData.data[i + 1] = pixelColor[1];
+          imageData.data[i + 2] = pixelColor[2];
+          imageData.data[i + 3] = imageData.data[i + 3];
+        }
       }
       maskContext?.putImageData(imageData, 0, 0);
     }

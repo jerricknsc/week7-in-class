@@ -72,5 +72,5 @@ export const toStrokeMask = (canvas: any) => {
 
 export const hexToRgb = (color: string) => {
   var parts = color.replace("#", "").match(/.{1,2}/g);
-  return parts.map(part => parseInt(part, 16));
+  return parts?.map(part => parseInt(part, 16));
 }
