@@ -67,7 +67,7 @@ export default function BgRemoverPopUp({ uploadedImage, uploadedMask, setBgRemov
     // Helper F2 - API Request sent to BE (may or may not take in mask)
     const handleImageUpload = async () => {
         setIsLoading(true);
-        const base64Image = await convertToBase64(uploadedImage);
+        const base64Image = await convertToBase64(uploadedImage || "");
         try {
         const response = await fetch(
             "localhost:8080/api/edit-image/background-removal",
@@ -143,8 +143,8 @@ export default function BgRemoverPopUp({ uploadedImage, uploadedMask, setBgRemov
 
                     <div className="items-center min-h-400"> 
                         <MaskEditor
-                            src={uploadedImage}
-                            maskSrc={uploadedMask}
+                            src={uploadedImage || ""}
+                            maskSrc={uploadedMask || ""}
                             canvasRef={canvas}
                             strokeCanvasRef={strokeCanvas}
                             maskColor="#23272d"

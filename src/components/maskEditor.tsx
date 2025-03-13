@@ -5,13 +5,14 @@ import { hexToRgb, toMask } from "./utils";
 export interface MaskEditorProps {
   src: string;
   maskSrc: string; // testing mask
-  canvasRef?: React.MutableRefObject<HTMLCanvasElement>;
-  strokeCanvasRef?: React.MutableRefObject<HTMLCanvasElement>;
+  canvasRef?: React.MutableRefObject<HTMLCanvasElement | undefined>;
+  strokeCanvasRef?: React.MutableRefObject<HTMLCanvasElement | undefined>;
   cursorSize?: number;
   onCursorSizeChange?: (size: number) => void;
   maskOpacity?: number;
   maskColor?: string;
-  maskBlendMode?: "normal"|"multiply"|"screen"|"overlay"|"darken"|"lighten"|"color-dodge"|"color-burn"|"hard-light"|"soft-light"|"difference"|"exclusion"|"hue"|"saturation"|"color"|"luminosity"
+  maskBlendMode?: "normal"|"multiply"|"screen"|"overlay"|"darken"|"lighten"|"color-dodge"|"color-burn"|"hard-light"|"soft-light"|"difference"|"exclusion"|"hue"|"saturation"|"color"|"luminosity";
+  style?: React.CSSProperties;
 }
 
 export const MaskEditorDefaults = {
@@ -200,7 +201,7 @@ export const MaskEditor: React.FC<MaskEditorProps> = (props: MaskEditorProps) =>
 
     const scrollListener = (evt: WheelEvent) => {
       if (cursorContext) {
-        props.onCursorSizeChange(Math.max(0, cursorSize + (evt.deltaY > 0 ? 1 : -1)));
+        props.onCursorSizeChange?.(Math.max(0, cursorSize + (evt.deltaY > 0 ? 1 : -1)))
 
         cursorContext.clearRect(0, 0, size.x, size.y);
 
