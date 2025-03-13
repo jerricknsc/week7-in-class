@@ -50,45 +50,45 @@ function App() {
     }
   };
 
-  const handleDownload = async () => {
-    let fileName = prompt("Enter a name for the file")?.trim() || "edited_image";
+  // const handleDownload = async () => {
+  //   let fileName = prompt("Enter a name for the file")?.trim() || "edited_image";
 
-    // ensure filename remains exactly as inputted
-    fileName = fileName.replace(/[^a-zA-Z0-9-_]/g, "");
+  //   // ensure filename remains exactly as inputted
+  //   fileName = fileName.replace(/[^a-zA-Z0-9-_]/g, "");
 
-    // prioritize downloading only edited images
-    const imageToDownload = croppedImage || bgRemovedImage || uploadedImage || baseImage;
-    if (!imageToDownload) {
-      alert("No image available to download.");
-      return;
-    }
+  //   // prioritize downloading only edited images
+  //   const imageToDownload = croppedImage || bgRemovedImage || uploadedImage || baseImage;
+  //   if (!imageToDownload) {
+  //     alert("No image available to download.");
+  //     return;
+  //   }
 
-    // fetch the image to convert it into a blob
-    const response = await fetch(imageToDownload);
-    const blob = await response.blob();
+  //   // fetch the image to convert it into a blob
+  //   const response = await fetch(imageToDownload);
+  //   const blob = await response.blob();
 
-    try {
-      // use file system access API to let user choose where to save the file
-      const fileHandle = await window.showSaveFilePicker({
-        suggestedName: `${fileName}.png`,
-        types: [
-          {
-            description: "PNG Image",
-            accept: { "image/png": [".png"] }
-          }
-        ]
-      });
+  //   try {
+  //     // use file system access API to let user choose where to save the file
+  //     const fileHandle = await window.showSaveFilePicker({
+  //       suggestedName: `${fileName}.png`,
+  //       types: [
+  //         {
+  //           description: "PNG Image",
+  //           accept: { "image/png": [".png"] }
+  //         }
+  //       ]
+  //     });
 
-      // create a writable stream and write the blob to the file
-      const writableStream = await fileHandle.createWritable();
-      await writableStream.write(blob);
-      await writableStream.close();
+  //     // create a writable stream and write the blob to the file
+  //     const writableStream = await fileHandle.createWritable();
+  //     await writableStream.write(blob);
+  //     await writableStream.close();
 
-      alert("File saved successfully!");
-    } catch (error) {
-      console.error("File save canceled or failed:", error);
-    }
-  };
+  //     alert("File saved successfully!");
+  //   } catch (error) {
+  //     console.error("File save canceled or failed:", error);
+  //   }
+  // };
 
   return (
     <>
@@ -130,13 +130,13 @@ function App() {
         <div className="flex pt-8 space-x-4">
 
           {/* Cropper */}
-          <CropPopUp baseImage={baseImage} setCroppedImage={(cropped) => {
+          <CropPopUp baseImage={baseImage || ""} setCroppedImage={(cropped) => {
             setUploadedImage(cropped); // Update the displayed image
             setCroppedImage(cropped);  // Store the cropped version separately
           }}
           />
 
-          <Enhance baseImage={baseImage} setEnhanceImage={(enhanced) => {
+          <Enhance baseImage={baseImage || ""} setEnhancedImage={(enhanced) => {
             setUploadedImage(enhanced); // Update the displayed image
             setCroppedImage(enhanced);  // Store the cropped version separately
           }}
@@ -172,7 +172,7 @@ function App() {
           <Button
             disabled={!uploadedImage}
             className="bg-emerald-600 hover:bg-emerald-500"
-            onClick={handleDownload}
+            // onClick={handleDownload}
           >
             <Download />
             Download
